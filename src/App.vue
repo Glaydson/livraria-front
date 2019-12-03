@@ -8,9 +8,6 @@
             <router-link to="/">Home</router-link>
           </li>
           <li>
-            <router-link to="/admin">Admin</router-link>
-          </li>
-          <li>
             <router-link to="/adminLivros">Admin Livros</router-link>
           </li>
         </ul>

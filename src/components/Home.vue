@@ -11,7 +11,7 @@
     name: 'home',
     data () {
       return {
-        msg: 'Bem Vindo à Sua Aplicação Vue.js',
+        msg: 'Bem Vindo ao Front-End da Livraria usando Vue.js',
       };
     },
   };

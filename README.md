@@ -1,4 +1,4 @@
-# unichristus-store
+# livraria-front
 
 ## Project setup
 ```
