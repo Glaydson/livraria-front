@@ -5,5 +5,13 @@
     todosLivros: state => state.livros,
     livro: state => state.livro,
   };
+
+  export const autorGetters = {
+    todosAutores: state => state.autores
+  };
+
+  export const editoraGetters = {
+    todasEditoras: state => state.editoras
+  }
   
   

@@ -30,9 +30,8 @@
 import toastr from "toastr";
 
 import {
-  ADICIONAR_PRODUTO_SUCESSO,
-  ATUALIZAR_PRODUTO_SUCESSO,
-  REMOVER_PRODUTO_SUCESSO
+  ADICIONAR_LIVRO_SUCESSO,
+  REMOVER_LIVRO_SUCESSO
 } from "./store/mutation-types";
 
 export default {
@@ -42,14 +41,11 @@ export default {
     this.$store.subscribe(mutation => {
       if (mutation.payload) {
         switch (mutation.type) {
-          case ADICIONAR_PRODUTO_SUCESSO:
-            toastr.success("Produto criado.", "Sucesso!");
+          case ADICIONAR_LIVRO_SUCESSO:
+            toastr.success("Livro criado.", "Sucesso!");
             break;
-          case ATUALIZAR_PRODUTO_SUCESSO:
-            toastr.success("Produto atualizado.", "Sucesso!");
-            break;
-          case REMOVER_PRODUTO_SUCESSO:
-            toastr.warning("Produto removido.", "Apagado!");
+          case REMOVER_LIVRO_SUCESSO:
+            toastr.warning("Livro removido.", "Apagado!");
             break;
           default:
         }

@@ -18,7 +18,7 @@ export default {
         numeroPaginas: "",
         preco: "",
         autores: [],
-        editora: ""
+        editora: {}
       }
     };
   },
@@ -26,6 +26,8 @@ export default {
     adicionaLivro(modelo) {
       // eslint-disable-next-line
       console.log("modelo", modelo);
+      this.$store.dispatch("adicionarLivro", modelo);
+      this.modelo = {};
     }
   },
   components: {

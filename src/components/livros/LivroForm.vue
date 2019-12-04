@@ -43,14 +43,16 @@
       </div>
       <div class="form-group">
         <label>Autores</label>
+        <span>{{modelo.autores}}</span>
         <select type="text" class="form-control" v-model="modelo.autores" name="autores" multiple>
-          <option v-for="autor in autores" :key="autor._id" :value="autor">{{autor.nome}}</option>
+          <option v-for="autor in autores" :key="autor.autorID" :value="autor">{{autor.nome}}</option>
         </select>
       </div>
       <div class="form-group">
         <label>Editora</label>
+        <span>{{modelo.editora}}</span>
         <select type="text" class="form-control" v-model="modelo.editora" name="editora">
-          <option v-for="editora in editoras" :key="editora._id" :value="editora">{{editora.nome}}</option>
+          <option v-for="editora in editoras" :key="editora.editoraID" :value="editora" >{{editora.nome}}</option>
         </select>
       </div>
     </div>
@@ -69,29 +71,17 @@
 <script>
 export default {
   props: ["modelo", "estaEditando"],
-  data() {
-    return {
-      autores: [
-        {
-          _id: "1",
-          nome: "José Saramago"
-        },
-        {
-          _id: "2",
-          nome: "Rui Barbosa"
-        }
-      ],
-      editoras: [
-        {
-          _id: "1",
-          nome: "Saraiva"
-        },
-        {
-          _id: "2",
-          nome: "Campus"
-        }
-      ]
-    };
+  computed: {
+    autores() {
+      return this.$store.getters.todosAutores;
+    },
+    editoras() {
+      return this.$store.getters.todasEditoras;
+    }
+  },
+  created() {
+    this.$store.dispatch("todosAutores");
+    this.$store.dispatch("todasEditoras");
   },
   methods: {
     salvarLivro() {
