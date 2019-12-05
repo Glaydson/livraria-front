@@ -28,6 +28,8 @@ export default {
       console.log("modelo", modelo);
       this.$store.dispatch("adicionarLivro", modelo);
       this.modelo = {};
+      this.$store.dispatch("todosLivros");
+      this.$router.push('../adminLivros/livros');
     }
   },
   components: {

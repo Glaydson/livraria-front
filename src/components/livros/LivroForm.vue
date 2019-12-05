@@ -43,17 +43,17 @@
       </div>
       <div class="form-group">
         <label>Autores</label>
-        <span>{{modelo.autores}}</span>
+        <!-- <span>{{modelo.autores}}</span> -->
         <select type="text" class="form-control" v-model="modelo.autores" name="autores" multiple>
           <option v-for="autor in autores" :key="autor.autorID" :value="autor">{{autor.nome}}</option>
         </select>
       </div>
       <div class="form-group">
         <label>Editora</label>
-        <span>{{modelo.editora}}</span>
         <select type="text" class="form-control" v-model="modelo.editora" name="editora">
           <option v-for="editora in editoras" :key="editora.editoraID" :value="editora" >{{editora.nome}}</option>
         </select>
+        <p>Editora Atual: <span>{{modelo.editora.nome}}</span></p>
       </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

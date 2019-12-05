@@ -7,6 +7,8 @@ import {
   LIVRO_POR_ID_SUCESSO,
   ADICIONAR_LIVRO,
   ADICIONAR_LIVRO_SUCESSO,
+  ATUALIZAR_LIVRO,
+  ATUALIZAR_LIVRO_SUCESSO,
   TODOS_AUTORES,
   TODOS_AUTORES_SUCESSO,
   TODAS_EDITORAS,
@@ -33,6 +35,12 @@ export const livroActions = {
     // Cria um novo livro usando a API
     axios.post(`${API_BASE}/livros/novo`, payload).then((response) => {
       commit(ADICIONAR_LIVRO_SUCESSO, response.data);
+    });
+  },
+  atualizarLivro({ commit }, payload) {
+    commit(ATUALIZAR_LIVRO);
+    axios.put(`${API_BASE}/livros/atualiza/${payload.livroID}`, payload).then((response) => {
+      commit(ATUALIZAR_LIVRO_SUCESSO, response.data);
     });
   },
   removerLivro({ commit }, payload) {

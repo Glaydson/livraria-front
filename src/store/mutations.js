@@ -5,6 +5,8 @@ import {
     LIVRO_POR_ID_SUCESSO,
     ADICIONAR_LIVRO,
     ADICIONAR_LIVRO_SUCESSO,
+    ATUALIZAR_LIVRO,
+    ATUALIZAR_LIVRO_SUCESSO,
     TODAS_EDITORAS,
     TODAS_EDITORAS_SUCESSO,
     TODOS_AUTORES,
@@ -34,6 +36,23 @@ export const livroMutations = {
     [ADICIONAR_LIVRO_SUCESSO]: (state, payload) => {
         state.showLoader = false;
         state.livros.push(payload);
+    },
+    [ATUALIZAR_LIVRO]: (state) => {
+        state.showLoader = true;
+    },
+    [ATUALIZAR_LIVRO_SUCESSO]: (state, payload) => {
+        state.showLoader = false;
+        state.livros = state.livros.map((l) => {
+            if (l.livroID === payload.livroID) {
+                payload = {
+                    ...payload,
+                    editora: state.editoras.filter(x => x.editoraID === payload.editora)[0],
+                    autores: state.autores.filter(x => x.autorID === payload.autores)
+                };
+                return payload;
+            }
+            return l;
+        });
     },
     [REMOVER_LIVRO]: (state) => {
         state.showLoader = true;

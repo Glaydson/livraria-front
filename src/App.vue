@@ -10,6 +10,9 @@
           <li>
             <router-link to="/adminLivros">Admin Livros</router-link>
           </li>
+          <li>
+            <router-link to="/adminEditoras">Admin Editoras</router-link>
+          </li>
         </ul>
       </div>
     </nav>
@@ -31,6 +34,7 @@ import toastr from "toastr";
 
 import {
   ADICIONAR_LIVRO_SUCESSO,
+  ATUALIZAR_LIVRO_SUCESSO,
   REMOVER_LIVRO_SUCESSO
 } from "./store/mutation-types";
 
@@ -39,10 +43,13 @@ export default {
   created() {
     // Subscriptions para as mutations
     this.$store.subscribe(mutation => {
-      if (mutation.payload) {
+      if (mutation) {
         switch (mutation.type) {
           case ADICIONAR_LIVRO_SUCESSO:
             toastr.success("Livro criado.", "Sucesso!");
+            break;
+          case ATUALIZAR_LIVRO_SUCESSO:
+            toastr.success("Livro atualizado.", "Sucesso!");
             break;
           case REMOVER_LIVRO_SUCESSO:
             toastr.warning("Livro removido.", "Apagado!");

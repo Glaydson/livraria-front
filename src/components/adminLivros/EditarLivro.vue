@@ -12,24 +12,33 @@ import LivroForm from "../../components/livros/LivroForm";
 export default {
   created() {
     // eslint-disable-next-line
-    console.log(this.modelo);
-    if (!this.modelo.titulo) {
-      this.$store.dispatch("livroPorId", this.$route.params.id);
-    }
+    console.log(this.$route.params.id);
+    this.$store.dispatch("livroPorId", this.$route.params.id);
   },
   computed: {
-    modelo() {
-      //const livroPorId = this.$store.getters.livro;
+    /* modelo() {
+      const livroPorId = this.$store.getters.livro;
       // eslint-disable-next-line
       console.log(this.$store.getters.livro);
-      //return Object.assign({}, livroPorId);
-      return this.$store.getters.livro;
+      return Object.assign({}, livroPorId);
+    } */
+    modelo: {
+      get() {
+        const livroPorId = this.$store.getters.livro;
+        // eslint-disable-next-line
+        console.log(this.$store.getters.livro);
+        return Object.assign({}, livroPorId);
+      },
+      set(novoValor){
+        return novoValor;
+      }
     }
   },
   methods: {
     atualizarLivro(modelo) {
       this.$store.dispatch("atualizarLivro", modelo);
-      this.modelo = {};
+      this.$store.dispatch("todosLivros");
+      this.$router.push('../livros');
     }
   },
   components: {
